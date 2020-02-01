@@ -1,0 +1,38 @@
+<html>
+
+<head>
+<!-- Required meta tags -->
+<meta charset="utf-8">
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+<!-- Bootstrap CSS -->
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css"
+	integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS"
+	crossorigin="anonymous">
+
+<title>Employee Directory</title>
+</head>
+<body>
+<div class="container">
+         <h3>
+			<center>Employee Directory</center>
+		</h3>
+		
+		<form action="#" th:action="@{/employees/login}" method="get" centre>
+		 <input type="text" placeholder="Enter email-id" class="form-control mb-4 col-4" th:name="emailId"/>
+		 <input type="password" placeholder="Enter password" class="form-control mb-4 col-4" th:name="fName"/>
+		 <button type="submit" class="btn btn-info mb-2 col-4">Login</button>
+		 
+		</form>
+		
+		<hr>
+		<!-- Sign-up form  -->
+		
+		<a th:href="@{/employees/employeeForm}">Sign- Up</a>
+		<a th:href="@{/employees/logout}">Logout</a>
+</div>
+
+</body>
+</html>

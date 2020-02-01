@@ -1,0 +1,106 @@
+<!DOCTYPE HTML>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+<!-- Required meta tags -->
+<meta charset="utf-8">
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+<!-- Bootstrap CSS -->
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css"
+	integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS"
+	crossorigin="anonymous">
+
+<title>Employee Directory</title>
+</head>
+
+<body>
+
+	<nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+		<!-- Brand -->
+		<a class="navbar-brand" href="#">Logo</a>
+
+		<!-- Links -->
+		<ul class="navbar-nav">
+			<li class="nav-item"><a class="nav-link" href="#">Link 1</a></li>
+			<li class="nav-item"><a class="nav-link" href="#">Link 2</a></li>
+
+			<!-- Dropdown -->
+			<li class="nav-item dropdown"><a
+				class="nav-link dropdown-toggle" href="#" id="navbardrop"
+				data-toggle="dropdown"> Dropdown link </a>
+				<div class="dropdown-menu">
+					<a class="dropdown-item" href="#">Link 1</a> <a
+						class="dropdown-item" href="#">Link 2</a> <a class="dropdown-item"
+						href="#">Link 3</a>
+				</div></li>
+		</ul>
+	</nav>
+	<div class="container">
+
+		<h3>
+			<center>Employee Directory</center>
+		</h3>
+		<hr>
+		<a th:href="@{/employees/employeeForm}"
+			class="btn btn-primary btn-sm mb-3">Add Employee</a>
+
+		<!-- 
+				<form action="#" th:action=""
+			th:object="" method="GET">
+
+			<input type="text" th:field=""
+				class="form-control mb-4 col-4" placeholder="First Name">
+
+			<button type="submit" class="btn btn-info col-2">Save</button>
+
+		</form>
+		 -->
+		<form action="#" th:action="@{/employees/searchByName}" method="get">
+
+			<input type="text" placeholder="SearchName" th:name="search"
+				class="form-control mb-4 col-4">
+			<button type="submit" class="btn btn-info mb-2 col-4">Search</button>
+
+		</form>
+
+		<table class="table table-bordered table-striped">
+			<thead class="thead-dark">
+				<tr>
+					<th>First Name</th>
+					<th>Last Name</th>
+					<th>Email</th>
+					<th>Action</th>
+
+				</tr>
+
+			</thead>
+
+			<tbody>
+				<tr th:each="tempEmployee : ${employees}">
+
+					<td th:text="${tempEmployee.firstName}" />
+					<td th:text="${tempEmployee.lastName}" />
+					<td th:text="${tempEmployee.email}" />
+					<!-- add Update Button -->
+					<td><a
+						th:href="@{/employees/employeeFormUpdateData(empId=${tempEmployee.id})}"
+						class="btn btn-info btn-sm"> Update</a> <a
+						th:href="@{/employees/employeeDelete(empId=${tempEmployee.id})}"
+						class="btn btn-danger btn-sm"
+						onclick="if(!(confirm('Are you want delete this employee?'))) return false">
+							Delete</a></td>
+
+				</tr>
+			</tbody>
+		</table>
+
+	</div>
+
+</body>
+</html>
+
+
+
